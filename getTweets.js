@@ -18,7 +18,7 @@ $.getJSON(_url,function(data){
         // array of words to ignore
         var ignore = ['and','the','to','a','of','for','as','i','with','it','is','on','that','this','can','in','be','has','if',"rt"];
         ignore = (function(){
-            var o = {}; // object prop checking > in array checking
+            var o = {};
             var iCount = ignore.length;
             for (var i=0;i<iCount;i++){
                 o[ignore[i]] = true;
