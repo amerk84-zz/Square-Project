@@ -1,4 +1,6 @@
-var username = prompt("What is the username");
+$ = require('jquery');
+
+var username = "WillyFerrell";
 
 var _url = 'https://api.twitter.com/1/statuses/user_timeline/'+username+'.json?callback=?&count=1000';
 $.getJSON(_url,function(data){
