@@ -6,3 +6,5 @@ user's last 1000 tweets sorted by frequency of use.
 Before running this script, make sure the jquery library is installed
 use command:
 npm install jquery
+
+also please make sure you install node.js, which you can find at nodejs.org
