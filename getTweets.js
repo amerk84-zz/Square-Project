@@ -6,7 +6,6 @@ var i = 0;
 var idNum = "0";
 var twit;
 var _url = 'https://api.twitter.com/1/statuses/user_timeline/willyferrell.json?callback=?&count=200';
-var allData=[]; //find out what variable type this should be
 
 while(n < 1000){
     if(n>0) _url = 'https://api.twitter.com/1/statuses/user_timeline/willyferrell.json?callback=?&count=200&max_id='+idNum;
