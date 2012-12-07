@@ -1,7 +1,7 @@
 //must add for jquery commands to work
 $ = require('jquery');
 
-var username = "WillyFerrel";
+var username = "WillyFerrell";
 
 var _url = 'https://api.twitter.com/1/statuses/user_timeline/'+username+'.json?callback=?&count=1000';
 $.getJSON(_url,function(data){
