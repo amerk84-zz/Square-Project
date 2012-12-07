@@ -12,7 +12,7 @@ $.getJSON(_url,function(data){
 
     var words = (function(){
         //put words into an array, removing links, hashtags, and mentions as well as any random characters
-        var sWords = tweets.toLowerCase().trim().replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-\?\/.]+/g,'').replace(/[#]+[A-Za-z0-9-_]+/g,'').replace(/[@]+[A-Za-z0-9-_]+/g,'').replace(/[+$~\`%-_,;:|."?!*{}”“]/g,'').split(/[\s\/]+/g).sort();
+        var sWords = tweets.toLowerCase().trim().replace(/[#]+[A-Za-z0-9-_]+/g,'').replace(/[@]+[A-Za-z0-9-_]+/g,'').replace(/[+$~\`%-_,;:|."?!*{}”“]/g,'').split(/[\s\/]+/g).sort();
         //save the word count before removing duplicates
         var iWordsCount = sWords.length;
         
@@ -27,7 +27,7 @@ $.getJSON(_url,function(data){
             return o;
         }());
         
-    	//object to store the words in
+		//object to store the words in
         var counts = {};
         for (var i=0; i<iWordsCount; i++) {
             var sWord = sWords[i];
