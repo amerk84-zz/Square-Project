@@ -1,17 +1,14 @@
 //must add for jquery commands to work
 $ = require('jquery');
 
-var n = 0;
 var tweets;
 var idNum = "0";
-var lastCall = "no";
 var username = "justinbieber";
 var _url = 'https://api.twitter.com/1/statuses/user_timeline/'+username+'.json?callback=?&count=200';
-var allData=[]; //find out what variable type this should be
+var allData=[];
 
 //make initial tweet request
 $.ajax({
-    async:false,
     url: _url,
     dataType: 'json',
     success: cb
@@ -38,7 +35,6 @@ function cb(data){
 	if(allData.length < 1000){
 		_url = 'https://api.twitter.com/1/statuses/user_timeline/'+username+'.json?callback=?&count=200&max_id='+idNum;
 		$.ajax({
-	        async:false,
 	        url: _url,
 	        dataType: 'json',
 	        success: cb
@@ -68,16 +64,21 @@ function pullTweets(){
     //console.log('\n' + username+" has tweeted " +len+ " times");
 }
 
+function ignoreWord(w,a){
+	for (var i=a.length-1; i>=0; i--) {
+	    if (a[i].indexOf(w) != -1) {
+	        a.splice(i, 1);
+	    }
+	}	
+}
+
 function parseTweets(){
 	//console.log("checkpoint - 6");
     //put words into an array, removing links, hashtags, and mentions as well as any random characters
-    var sWords = tweets.toLowerCase().trim().replace(/[#]+[A-Za-z0-9-_]+/g,'').replace(/[@]+[A-Za-z0-9-_]+/g,'').replace(/[+$~\`%-_,;:|."?!*{}”“]/g,'').split(/[\s\/]+/g).sort();
-	//remove words that contain "http"
-	for (var i=sWords.length-1; i>=0; i--) {
-	    if (sWords[i].indexOf("http") != -1) {
-	        sWords.splice(i, 1);
-	    }
-	}
+    var sWords = tweets.toLowerCase().trim().replace(/[#]+[A-Za-z0-9-_]+/g,'').replace(/[@]+[A-Za-z0-9-_]+/g,'').replace(/[+$~\`%-_,;:|❒✔｀ヽ."?!*{}”“]/g,'').split(/[\s\/]+/g).sort();
+	//remove words that contain "http",
+	ignoreWord("http",sWords);
+
     //save the word count before removing duplicates
     var iWordsCount = sWords.length;
     // array of words to ignore
