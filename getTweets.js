@@ -14,6 +14,7 @@ $.ajax({
     success: cb
 });
 
+//success function for initial tweet request
 function cb(data){
 	//console.log("checkpoint - 1");
 	//we know we are at a user's last tweet when the returned data array's length is one
@@ -47,6 +48,8 @@ function cb(data){
 	}
 }
 
+//function that extracts tweet strings from their container object, then
+//calls the parseTweets function, and then outputs the results to the console
 function pullTweets(){
 	//console.log("checkpoint - 5");
 	var len = (allData.length > 1000) ? 1000 : allData.length;
@@ -64,6 +67,7 @@ function pullTweets(){
     //console.log('\n' + username+" has tweeted " +len+ " times");
 }
 
+//removes a specified string from a specified array or strings
 function ignoreWord(w,a){
 	for (var i=a.length-1; i>=0; i--) {
 	    if (a[i].indexOf(w) != -1) {
@@ -72,6 +76,9 @@ function ignoreWord(w,a){
 	}	
 }
 
+//function that parses through the tweets strings and removes any
+//unwanted words or characters, mentions, or hashtags, and then
+//sorts the words in order or frequency
 function parseTweets(){
 	//console.log("checkpoint - 6");
     //put words into an array, removing links, hashtags, and mentions as well as any random characters
